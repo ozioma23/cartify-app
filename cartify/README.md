@@ -22,8 +22,9 @@ Styling: Tailwind CSS
 cartify-app/
 │── public/                     # Static assets (logos, icons, etc.)
 │── src/                        # Source code
-│   ├── components/             # Reusable UI components etc.
+│   ├── components/             # Reusable UI components (Navbar, ProductCard, etc.)
 │   ├── pages/                  # Individual pages of the app
+│   │   ├── Landing.jsx         # Landing page (welcomes users, directs to login)
 │   │   ├── Home.jsx            # Product listing page
 │   │   ├── ProductDetails.jsx  # Product details page
 │   │   ├── Cart.jsx            # Shopping cart page
@@ -37,5 +38,5 @@ cartify-app/
 │   ├── main.jsx                # Entry point, renders App.jsx
 │── .gitignore                  # Ignore unnecessary files (e.g., node_modules)
 │── package.json                # Project dependencies & scripts
-│── vite.config.js               # Vite configuration
+│── vite.config.js              # Vite configuration
 │── README.md                   # Project overview, setup, usage instructions
