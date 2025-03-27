@@ -49,14 +49,14 @@ const LoginPage = () => {
         <>
             <div className="flex flex-col-reverse lg:flex-row items-center justify-center min-h-screen px-8 md:px-12 lg:px-24 bg-primary text-white">
                 <div className="flex flex-col text-center lg:text-left lg:p1-12 w-full lg:w-1/2">
-                    <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mt-4 lg:mt-20 lg:mb-4">
+                    <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mt-4 lg:mt-20 lg:mb-4 text-left">
                         Login to your <br />
                         <span className="text-blue-400 leading-loose bg-gradient-to-r from-white via-blue-400 to-blue-600 text-transparent bg-clip-text">
                             <span> Cartify account</span>
                         </span>
                     </h1>
                     <div>
-                        <div className=" flex flex-col space-y-4 mb-16">
+                        <div className=" flex flex-col space-y-4 mb-8">
                             <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
                                 <div>
                                     <input
@@ -65,7 +65,7 @@ const LoginPage = () => {
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
                                         required
-                                        className="border border-blue-500 px-4 py-2 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-400 w-full"
+                                        className="border border-blue-500 px-4 py-2 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-400 w-full text-black"
                                     />
                                 </div>
                                 <div>
@@ -75,14 +75,11 @@ const LoginPage = () => {
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                         required
-                                        className="border border-blue-500 px-4 py-2 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-400 w-full"
+                                        className="border border-blue-500 px-4 py-2  mb-8 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-400 w-full text-black"
                                     />
                                 </div>
-                            </form>
-                        </div>
-
-                        <div className="mt-6 flex flex-col space-y-4">
-                            <button onClick={handleLogin} className="bg-secondary text-white px-6 py-3 md:px-8 md:py-4 rounded-lg">
+                                <div className="mt-10 flex flex-col space-y-4">
+                            <button onClick={handleLogin} className="bg-secondary text-white px-6 py-3 md:px-8 md:py-4 rounded-lg" type="submit">
                                 Login
                             </button>
 
@@ -91,6 +88,10 @@ const LoginPage = () => {
                             </button>
                         </div>
 
+                            </form>
+                        </div>
+
+                       
                         <p className=" text-center pb-10 mt-16  lg:mt-4 text-lg md:text-lg lg:text-xl">
                             Don't have an account?
                             <span onClick={handleSignUp} className="text-secondary cursor-pointer"> Sign Up</span>

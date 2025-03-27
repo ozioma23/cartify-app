@@ -39,7 +39,10 @@ const LandingPage = () => {
                             <span className="lg:inline"> Cartify</span>
                         </span>
                     </h1>
-                    <p className="text-lg md:text-xl lg:text-2xl mt-4">Shop from the comfort of your space</p>
+                    <p className="text-lg md:text-xl lg:text-2xl mt-4 text-left">
+  <span className="inline lg:hidden">Shop from the comfort of <br /> your space</span>
+  <span className="hidden lg:inline">Shop from the comfort of your space</span>
+</p>
 
                     <div className="mt-6 flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
                         <button onClick={handleLogin} className="bg-secondary text-white px-6 py-3 md:px-8 md:py-4 rounded-lg">
