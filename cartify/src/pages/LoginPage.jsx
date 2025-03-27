@@ -49,47 +49,49 @@ const LoginPage = () => {
         <>
             <div className="flex flex-col-reverse lg:flex-row items-center justify-center min-h-screen px-8 md:px-12 lg:px-24 bg-primary text-white">
                 <div className="flex flex-col text-center lg:text-left lg:p1-12 w-full lg:w-1/2">
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-                        Login to your
-                        <span className="text-blue-400 leading-tight bg-gradient-to-r from-white via-blue-400 to-blue-600 text-transparent bg-clip-text">
-                            <span className="lg:inline"> Cartify account</span>
+                    <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mt-4 lg:mt-20 lg:mb-4">
+                        Login to your <br />
+                        <span className="text-blue-400 leading-loose bg-gradient-to-r from-white via-blue-400 to-blue-600 text-transparent bg-clip-text">
+                            <span> Cartify account</span>
                         </span>
                     </h1>
                     <div>
-                        <div className="border borser-secondary mt-6 flex-col space-y-4">
-                            <form onSubmit={handleSubmit}>
-                                <div >
+                        <div className=" flex flex-col space-y-4 mb-16">
+                            <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+                                <div>
                                     <input
                                         type="email"
-                                        placeholder="Enter your email"
+                                        placeholder="Email"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
                                         required
+                                        className="border border-blue-500 px-4 py-2 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-400 w-full"
                                     />
                                 </div>
                                 <div>
                                     <input
                                         type="password"
-                                        placeholder="Enter your password"
+                                        placeholder="Password"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                         required
+                                        className="border border-blue-500 px-4 py-2 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-400 w-full"
                                     />
                                 </div>
                             </form>
                         </div>
 
-                        <div className="mt-6 flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
+                        <div className="mt-6 flex flex-col space-y-4">
                             <button onClick={handleLogin} className="bg-secondary text-white px-6 py-3 md:px-8 md:py-4 rounded-lg">
                                 Login
                             </button>
 
-                            <button onClick={handleGuestAccess} className="border border-secondary text-white px-6 py-3 md:px-8 md:py-4 rounded-lg">
+                            <button onClick={handleGuestAccess} className="border border-secondary text-white  px-8 py-4 rounded-lg">
                                 Continue as Guest
                             </button>
                         </div>
 
-                        <p className="pb-10 mt-16 md:mt-24 text-lg md:text-xl lg:text-2xl">
+                        <p className=" text-center pb-10 mt-16  lg:mt-4 text-lg md:text-lg lg:text-xl">
                             Don't have an account?
                             <span onClick={handleSignUp} className="text-secondary cursor-pointer"> Sign Up</span>
                         </p>
@@ -113,7 +115,7 @@ const LoginPage = () => {
             <img
                 src="/shapes/irregular2.svg"
                 alt="Irregular Shape 2"
-                className="absolute bottom-[-50px] md:bottom-[-20px] right-0 w-[300px] h-[250px] sm:w-[350px] sm:h-[300px] md:w-[400px] md:h-[350px] lg:w-[450px] lg:h-[400px] pointer-events-none"
+                className="absolute bottom-[-200px] md:bottom-[-20px] right-0 w-[300px] h-[250px] sm:w-[350px] sm:h-[300px] md:w-[400px] md:h-[350px] lg:w-[450px] lg:h-[400px] pointer-events-none"
             />
         </>
     );
