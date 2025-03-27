@@ -3,15 +3,32 @@ import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
-    const { continueAsGuest } = useContext(UserContext);
+    const userContext = useContext(UserContext);
     const navigate = useNavigate();
 
-    const handleLogin = () => navigate("/login");
-    const handleSignUp = () => navigate("/signup");
-    const handleGuestAccess = () => {
-        continueAsGuest();
-        navigate("/home");
+   
+    const continueAsGuest = userContext?.continueAsGuest;
+
+    const handleLogin = () => {
+        console.log("Navigating to Login");
+        navigate("/LoginPage");
     };
+
+    const handleSignUp = () => {
+        console.log("Navigating to Sign Up");
+        navigate("/signup");
+    };
+
+    const handleGuestAccess = () => {
+        if (continueAsGuest) {
+            console.log("Continuing as Guest");
+            continueAsGuest();
+            navigate("/HomePage");
+        } else {
+            console.error("UserContext is not available!");
+        }
+    };
+
     return (
         <>
             <div className="flex flex-col-reverse lg:flex-row items-center justify-center min-h-screen px-8 md:px-12 lg:px-24 bg-primary text-white">
@@ -25,16 +42,16 @@ const LandingPage = () => {
                     <p className="text-lg md:text-xl lg:text-2xl mt-4">Shop from the comfort of your space</p>
 
                     <div className="mt-6 flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
-    <button onClick={handleLogin} className="bg-secondary text-white px-6 py-3 md:px-8 md:py-4 rounded-lg">
-        Login
-    </button>
+                        <button onClick={handleLogin} className="bg-secondary text-white px-6 py-3 md:px-8 md:py-4 rounded-lg">
+                            Login
+                        </button>
 
-    <button onClick={handleGuestAccess} className="border border-secondary text-white px-6 py-3 md:px-8 md:py-4 rounded-lg">
-        Continue as Guest
-    </button>
-</div>
+                        <button onClick={handleGuestAccess} className="border border-secondary text-white px-6 py-3 md:px-8 md:py-4 rounded-lg">
+                            Continue as Guest
+                        </button>
+                    </div>
 
-                    <p className="pb-10 mt-16 md:mt-24 text-lg md:tet-xl lg:text-2xl">
+                    <p className="pb-10 mt-16 md:mt-24 text-lg md:text-xl lg:text-2xl">
                         Don't have an account?
                         <span onClick={handleSignUp} className="text-secondary cursor-pointer"> Sign Up</span>
                     </p>
@@ -49,18 +66,18 @@ const LandingPage = () => {
                 </div>
             </div>
             <img
-                src="/shapes/irregular1.svg"
-                alt="Irregular Shape 1"
-                className="absolute top-[-30px] lg:top-[20px] left-0 sm:left-[-15px] w-[300px] h-[250px] sm:w-[400px] sm:h-[350px] md:w-[500px] md:h-[450px] lg:w-[600px] lg:h-[500px]"
-            />
+    src="/shapes/irregular1.svg"
+    alt="Irregular Shape 1"
+    className="absolute top-[-30px] lg:top-[20px] left-0 sm:left-[-15px] w-[300px] h-[250px] sm:w-[400px] sm:h-[350px] md:w-[500px] md:h-[450px] lg:w-[600px] lg:h-[500px] pointer-events-none"
+/>
 
-            <img
-                src="/shapes/irregular2.svg"
-                alt="Irregular Shape 2"
-                className="absolute bottom-[-50px] md:bottom-[-20px] right-0 w-[300px] h-[250px] sm:w-[350px] sm:h-[300px] md:w-[400px] md:h-[350px] lg:w-[450px] lg:h-[400px]"
-            />
+<img
+    src="/shapes/irregular2.svg"
+    alt="Irregular Shape 2"
+    className="absolute bottom-[-50px] md:bottom-[-20px] right-0 w-[300px] h-[250px] sm:w-[350px] sm:h-[300px] md:w-[400px] md:h-[350px] lg:w-[450px] lg:h-[400px] pointer-events-none"
+/>
         </>
     );
-}
-export default LandingPage
+};
 
+export default LandingPage;
