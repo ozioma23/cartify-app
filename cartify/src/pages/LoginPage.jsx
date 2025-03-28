@@ -58,6 +58,19 @@ const LoginPage = () => {
                         </span>
                     </h1>
                     <div>
+                    <div className="">
+                    <img
+                        src="/shapes/irregular1.svg"
+                        alt="Irregular Shape 1"
+                        className="absolute top-[-30px] lg:top-[20px] left-0 sm:left-[-15px] w-[300px] h-[250px] sm:w-[400px] sm:h-[350px] md:w-[500px] md:h-[450px] lg:w-[600px] lg:h-[500px] pointer-events-none"
+                    />
+
+                    <img
+                        src="/shapes/irregular2.svg"
+                        alt="Irregular Shape 2"
+                        className="absolute bottom-[-200px] md:bottom-[-20px] right-0 w-[300px] h-[250px] sm:w-[350px] sm:h-[300px] md:w-[400px] md:h-[350px] lg:w-[450px] lg:h-[400px] pointer-events-none"
+                    />
+                </div> 
                         <div className=" flex flex-col space-y-4 mb-8">
                             <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
                                 <div className="relative w-full">
@@ -82,7 +95,7 @@ const LoginPage = () => {
                                     <button
                                         type="button"
                                         onClick={() => setShowPassword(!showPassword)}
-                                        className="mb-8 absolute inset-y-0 right-3 flex items-center text-gray-400 hover:text-gray-600"
+                                        className="mb-8 absolute inset-y-0 right-5 flex items-center text-gray-400 hover:text-gray-600"
                                     >
                                         {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                                     </button>
@@ -115,18 +128,9 @@ const LoginPage = () => {
                         className="h-64 md:h-80 lg:h-96 w-auto"
                     />
                 </div>
+                
             </div>
-            <img
-                src="/shapes/irregular1.svg"
-                alt="Irregular Shape 1"
-                className="absolute top-[-30px] lg:top-[20px] left-0 sm:left-[-15px] w-[300px] h-[250px] sm:w-[400px] sm:h-[350px] md:w-[500px] md:h-[450px] lg:w-[600px] lg:h-[500px] pointer-events-none"
-            />
 
-            <img
-                src="/shapes/irregular2.svg"
-                alt="Irregular Shape 2"
-                className="absolute bottom-[-200px] md:bottom-[-20px] right-0 w-[300px] h-[250px] sm:w-[350px] sm:h-[300px] md:w-[400px] md:h-[350px] lg:w-[450px] lg:h-[400px] pointer-events-none"
-            />
         </>
     );
 };
