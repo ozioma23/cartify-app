@@ -21,15 +21,17 @@ const LoginPage = () => {
             return;
         }
 
+        const storedUser = JSON.parse(localStorage.getItem("cartifyUser"));
+
+    if (!storedUser || storedUser.email !== email) {
+        setError("Invalid email or password.");
+        return;
+    }
+
         const userData = { email };
         loginUser(userData);
         localStorage.setItem("cartifyUser", JSON.stringify(userData));
         navigate("/HomePage");
-    };
-
-    const handleLogin = () => {
-        console.log("Navigating to Login");
-        navigate("/LoginPage");
     };
 
     const handleSignUp = () => {
@@ -72,6 +74,8 @@ const LoginPage = () => {
                     />
                 </div> 
                         <div className=" flex flex-col space-y-4 mb-8">
+                        {error && <p className="text-red-500 text-sm">{error}</p>}
+
                             <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
                                 <div className="relative w-full">
                                     <input
@@ -101,7 +105,7 @@ const LoginPage = () => {
                                     </button>
                                 </div>
                                 <div className="mt-10 flex flex-col space-y-4">
-                                    <button onClick={handleLogin} className="bg-secondary text-white px-6 py-3 md:px-8 md:py-4 rounded-lg" type="submit">
+                                    <button className="bg-secondary text-white px-6 py-3 md:px-8 md:py-4 rounded-lg" type="submit">
                                         Login
                                     </button>
 
