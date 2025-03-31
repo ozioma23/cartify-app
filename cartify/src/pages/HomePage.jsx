@@ -9,7 +9,7 @@ const HomePage = () => {
     const [loading, setLoading] = useState(true);
 
     const [searchParams] = useSearchParams();
-    const searchQuery = searchParams.get("search") || ""; 
+    const searchQuery = searchParams.get("search") || "";
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -46,38 +46,46 @@ const HomePage = () => {
     };
 
     return (
-        <div className="container mx-auto px-20 py-8 bg-primary text-white">
+        <div className="container mx-auto px-4 lg:px-20 py-8 lg:py-8 bg-primary text-white">
             <Navbar />
 
             {loading ? <p>Loading products...</p> : (
                 Object.keys(categories).map((categoryName, index) => {
                     const isExpanded = expandedCategories[categoryName] || false;
-                    const visibleProducts = isExpanded ? categories[categoryName] : categories[categoryName].slice(0, 3);
+                    const visibleProducts = isExpanded ? categories[categoryName] : categories[categoryName].slice(0, 4);
 
                     return (
                         <div key={index} className="mb-8 text-left">
                             <h2 className="text-2xl font-bold mb-4">{categoryName}</h2>
 
-                            <ul className="space-y-4">
+                            <ul className="lg:space-y-4 grid grid-cols-2 gap-4 lg:grid-cols-1">
                                 {categories[categoryName].length > 0 ? (
                                     visibleProducts.map((product) => (
-                                        <li key={product.id} className="flex items-center space-x-8 p-8 border rounded-md shadow bg-white">
-                                            <img src={product.thumbnail} alt={product.title} className="w-36 h-36 object-cover rounded-md" />
+                                        <li
+                                            key={product.id}
+                                            className="flex flex-col lg:flex-row items-center lg:items-start justify-between h-full p-4 border rounded-md shadow bg-white"
+                                        >
+                                            <img
+                                                src={product.thumbnail}
+                                                alt={product.title}
+                                                className="w-36 h-36 object-cover rounded-md mx-auto md:mx-0 md:mr-4"
+                                            />
 
-                                            <div className="flex flex-col">
-                                                <h3 className="font-semibold text-lg text-black">{product.title}</h3>
-                                                <p className="text-sm text-gray-600">{product.description}</p>
-                                                <p className="text-black font-bold">${product.price}</p>
-                                                <p className="text-gray-500 text-sm">Brand: {product.brand}</p>
-                                                <p className="text-yellow-500 text-sm">⭐ {product.rating}</p>
-                                                <div className="flex items-start">
-                                                    <button
-                                                        onClick={() => addToCart(product)}
-                                                        className="flex items-start mt-2 px-4 py-2 border border-secondary text-black rounded-md hover:border-secondary hover:bg-secondary hover:text-white"
-                                                    >
-                                                        Add to Cart
-                                                    </button>
+                                            <div className="flex flex-col justify-between flex-grow">
+                                                <div>
+                                                    <h3 className="font-semibold text-lg text-black">{product.title}</h3>
+                                                    <p className="text-sm text-gray-600 line-clamp-3">{product.description}</p>
+                                                    <p className="text-black font-bold">${product.price}</p>
+                                                    <p className="text-gray-500 text-sm">Brand: {product.brand}</p>
+                                                    <p className="text-yellow-500 text-sm">⭐ {product.rating}</p>
                                                 </div>
+
+                                                <button
+                                                    onClick={() => addToCart(product)}
+                                                    className="mt-2 md:mt-auto md:self-start px-4 py-2 border border-secondary text-black rounded-md hover:border-secondary hover:bg-primary hover:text-white"
+                                                >
+                                                    Add to Cart
+                                                </button>
                                             </div>
                                         </li>
                                     ))
