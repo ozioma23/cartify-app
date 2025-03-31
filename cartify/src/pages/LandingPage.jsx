@@ -23,7 +23,7 @@ const LandingPage = () => {
         if (continueAsGuest) {
             console.log("Continuing as Guest");
             continueAsGuest();
-            navigate("/HomePage");
+            navigate("/buy");
         } else {
             console.error("UserContext is not available!");
         }

@@ -31,7 +31,7 @@ const LoginPage = () => {
         const userData = { email };
         loginUser(userData);
         localStorage.setItem("cartifyUser", JSON.stringify(userData));
-        navigate("/HomePage");
+        navigate("/buy");
     };
 
     const handleSignUp = () => {
@@ -43,7 +43,7 @@ const LoginPage = () => {
         if (continueAsGuest) {
             console.log("Continuing as Guest");
             continueAsGuest();
-            navigate("/HomePage");
+            navigate("/buy");
         } else {
             console.error("UserContext is not available!");
         }

@@ -18,7 +18,8 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/LoginPage" element={<LoginPage />} />
           <Route path="/Signup" element={<Signup />} />
-          <Route path="/HomePage" element={<HomePage />} />
+          <Route path="/buy" element={<HomePage />} />  {/* Buy is Home */}
+          <Route path="/sell" element={<div>Sell Page (Coming Soon)</div>} />
         </Routes>
       </Router>
     </UserContextProvider>   

@@ -73,7 +73,7 @@ const HomePage = () => {
                                                 <div className="flex items-start">
                                                     <button
                                                         onClick={() => addToCart(product)}
-                                                        className="flex items-start mt-2 px-4 py-2 border border-secondary text-black rounded-md hover:border-secondary hover:bg-primary hover:text-white"
+                                                        className="flex items-start mt-2 px-4 py-2 border border-secondary text-black rounded-md hover:border-secondary hover:bg-secondary hover:text-white"
                                                     >
                                                         Add to Cart
                                                     </button>
