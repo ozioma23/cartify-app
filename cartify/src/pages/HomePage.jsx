@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
+
 const HomePage = () => {
     const [products, setProducts] = useState([]);
     const [expandedCategories, setExpandedCategories] = useState({});
     const [cart, setCart] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [selectedProduct, setSelectedProduct] = useState(null); // Track selected product
 
     const [searchParams] = useSearchParams();
     const searchQuery = searchParams.get("search") || "";
@@ -46,72 +48,104 @@ const HomePage = () => {
     };
 
     return (
-        <div className="container mx-auto px-4 lg:px-20 py-8 lg:py-8 bg-primary text-white">
-            <Navbar />
+        <div className="relative">
+            <div className="container mx-auto px-4 lg:px-20 py-8 lg:py-8 bg-primary text-white">
+                <Navbar />
 
-            {loading ? <p>Loading products...</p> : (
-                Object.keys(categories).map((categoryName, index) => {
-                    const isExpanded = expandedCategories[categoryName] || false;
-                    const visibleProducts = isExpanded ? categories[categoryName] : categories[categoryName].slice(0, 4);
+                {loading ? <p>Loading products...</p> : (
+                    Object.keys(categories).map((categoryName, index) => {
+                        const isExpanded = expandedCategories[categoryName] || false;
+                        const visibleProducts = isExpanded ? categories[categoryName] : categories[categoryName].slice(0, 4);
 
-                    return (
-                        <div key={index} className="mb-8 text-left">
-                            <h2 className="text-2xl font-bold mb-4">{categoryName}</h2>
+                        return (
+                            <div key={index} className="mb-8 text-left">
+                                <h2 className="text-2xl font-bold mb-4">{categoryName}</h2>
 
-                            <ul className="lg:space-y-4 grid grid-cols-2 gap-4 lg:grid-cols-1">
-                                {categories[categoryName].length > 0 ? (
-                                    visibleProducts.map((product) => (
-                                        <li
-                                            key={product.id}
-                                            className="flex flex-col lg:flex-row items-center lg:items-start justify-between h-full p-4 border rounded-md shadow bg-white"
-                                        >
-                                            <img
-                                                src={product.thumbnail}
-                                                alt={product.title}
-                                                className="w-36 h-36 object-cover rounded-md mx-auto md:mx-0 md:mr-4"
-                                            />
+                                <ul className="lg:space-y-4 grid grid-cols-2 gap-4 lg:grid-cols-1">
+                                    {categories[categoryName].length > 0 ? (
+                                        visibleProducts.map((product) => (
+                                            <li
+                                                key={product.id}
+                                                className="flex flex-col lg:flex-row items-center lg:items-start justify-between h-full p-4 border rounded-md shadow bg-white"
+                                                onClick={() => setSelectedProduct(product)} // Open modal on click
+                                            >
+                                                <img
+                                                    src={product.thumbnail}
+                                                    alt={product.title}
+                                                    className="w-36 h-36 object-cover rounded-md mx-auto md:mx-0 md:mr-4"
+                                                />
 
-                                            <div className="flex flex-col justify-between flex-grow">
-                                                <div>
-                                                    <h3 className="font-semibold text-lg text-black">{product.title}</h3>
-                                                    <p className="text-sm text-gray-600 line-clamp-3">{product.description}</p>
-                                                    <p className="text-black font-bold">${product.price}</p>
-                                                    <p className="text-gray-500 text-sm">Brand: {product.brand}</p>
-                                                    <p className="text-yellow-500 text-sm">⭐ {product.rating}</p>
+                                                <div className="flex flex-col justify-between flex-grow">
+                                                    <div>
+                                                        <h3 className="font-semibold text-lg text-black">{product.title}</h3>
+                                                        <p className="text-sm text-gray-600 line-clamp-3">{product.description}</p>
+                                                        <p className="text-black font-bold">${product.price}</p>
+                                                        <p className="text-gray-500 text-sm">Brand: {product.brand}</p>
+                                                        <p className="text-yellow-500 text-sm">⭐ {product.rating}</p>
+                                                    </div>
+
+                                                    <button
+                                                        onClick={(e) => {
+                                                            e.stopPropagation(); // Prevent modal from opening when clicking the button
+                                                            addToCart(product);
+                                                        }}
+                                                        className="mt-2 md:mt-auto md:self-start px-4 py-2 border border-secondary text-black rounded-md hover:border-secondary hover:bg-secondary hover:text-white"
+                                                    >
+                                                        Add to Cart
+                                                    </button>
                                                 </div>
+                                            </li>
+                                        ))
+                                    ) : (
+                                        <p className="text-gray-400">No products found.</p>
+                                    )}
+                                </ul>
 
-                                                <button
-                                                    onClick={() => addToCart(product)}
-                                                    className="mt-2 md:mt-auto md:self-start px-4 py-2 border border-secondary text-black rounded-md hover:border-secondary hover:bg-primary hover:text-white"
-                                                >
-                                                    Add to Cart
-                                                </button>
-                                            </div>
-                                        </li>
-                                    ))
-                                ) : (
-                                    <p className="text-gray-400">No products found.</p>
+                                {categories[categoryName].length > 4 && (
+                                    <div className="flex justify-end">
+                                        <button
+                                            onClick={() =>
+                                                setExpandedCategories(prev => ({
+                                                    ...prev,
+                                                    [categoryName]: !prev[categoryName],
+                                                }))
+                                            }
+                                            className="mt-4 px-4 py-2 text-white rounded-md hover:text-fadedGrey"
+                                        >
+                                            {isExpanded ? "See Less" : "See More"}
+                                        </button>
+                                    </div>
                                 )}
-                            </ul>
+                            </div>
+                        );
+                    })
+                )}
+            </div>
 
-                            {categories[categoryName].length > 4 && (
-                                <div className="flex justify-end">
-                                    <button
-                                        onClick={() =>
-                                            setExpandedCategories(prev => ({
-                                                ...prev,
-                                                [categoryName]: !prev[categoryName],
-                                            }))
-                                        }
-                                        className="mt-4 px-4 py-2 text-white rounded-md hover:text-fadedGrey"
-                                    >
-                                        {isExpanded ? "See Less" : "See More"}
-                                    </button>
-                                </div>
-                            )}
-                        </div>
-                    );
-                })
+            {/* Product Details Modal */}
+            {selectedProduct && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+                    <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg relative">
+                        <button
+                            className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+                            onClick={() => setSelectedProduct(null)}
+                        >
+                            ✖
+                        </button>
+                        <img src={selectedProduct.thumbnail} alt={selectedProduct.title} className="w-full h-64 object-cover rounded-md mb-4" />
+                        <h2 className="text-2xl font-bold text-black">{selectedProduct.title}</h2>
+                        <p className="text-gray-700">{selectedProduct.description}</p>
+                        <p className="text-black font-bold text-xl mt-2">${selectedProduct.price}</p>
+                        <p className="text-gray-500 text-sm">Brand: {selectedProduct.brand}</p>
+                        <p className="text-yellow-500 text-sm">⭐ {selectedProduct.rating}</p>
+                        <button
+                            onClick={() => addToCart(selectedProduct)}
+                            className="mt-4 w-full px-4 py-2 border border-secondary text-black rounded-md hover:border-secondary hover:bg-secondary hover:text-white"
+                        >
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
             )}
         </div>
     );

@@ -5,6 +5,7 @@ import LandingPage from "./pages/LandingPage"
 import LoginPage from "./pages/LoginPage";
 import Signup from './pages/Signup';
 import HomePage from './pages/HomePage';
+import ProductDetails from './pages/ProductDetails';
 
 import './App.css'
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/Signup" element={<Signup />} />
           <Route path="/buy" element={<HomePage />} />  {/* Buy is Home */}
           <Route path="/sell" element={<div>Sell Page (Coming Soon)</div>} />
+          <Route path="/product/:id" element={<ProductDetails />} />
         </Routes>
       </Router>
     </UserContextProvider>   
