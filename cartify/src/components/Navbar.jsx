@@ -1,13 +1,15 @@
+import { useSearchParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
-const Navbar = ({ onSearch }) => {
-    const [searchQuery, setSearchQuery] = useState("");
+const Navbar = () => {
+    const [searchParams, setSearchParams] = useSearchParams();
+    const searchQuery = searchParams.get("search") || "";
 
     const handleSearchChange = (e) => {
-        setSearchQuery(e.target.value);
-        onSearch(e.target.value); 
+        const query = e.target.value;
+        setSearchParams(query ? { search: query } : {}); 
     };
+
     return (
         <nav className="flex justify-between">
             <Link to="/">
@@ -15,18 +17,17 @@ const Navbar = ({ onSearch }) => {
             </Link>
 
             
-                <input
-    type="text"
-    placeholder="search by products or categories"
-    value={searchQuery}
-    onChange={(e) => setSearchQuery(e.target.value)}
-    className="w-1/2 p-2 pl-4 ml-8 text-black rounded-full"
- />
+            <input
+                type="text"
+                placeholder="Search by products or categories"
+                value={searchQuery}
+                onChange={handleSearchChange}
+                className="w-1/2 p-2 pl-4 ml-8 rounded-full border text-black"
+            />
 
             <div className="flex items-center space-x-6">
                 <Link to="/buy" className="hover:text-gray-300">Buy</Link>
                 <Link to="/sell" className="hover:text-gray-300">Sell</Link>
-
                 <Link to="/cart" className="flex items-center space-x-2">
                     <img src="/Images/cart.png" alt="Cart" className="w-6 h-6" />
                     <span>Cart</span>
