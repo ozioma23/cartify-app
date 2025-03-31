@@ -1,53 +1,68 @@
 import { useState } from "react";
 
-export const ProductDetails = ({ product, onClose, addToCart }) => {
+const ProductDetails = ({ selectedProduct, setSelectedProduct, addToCart }) => {
+    if (!selectedProduct) return null;
+
     const [quantity, setQuantity] = useState(1);
 
-    const increaseQuantity = () => setQuantity(prev => prev + 1);
+    const increaseQuantity = () => setQuantity(quantity + 1);
     const decreaseQuantity = () => {
-        if (quantity > 1) setQuantity(prev => prev - 1);
+        if (quantity > 1) setQuantity(quantity - 1);
     };
 
     return (
-        <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full relative border border-gray-300">
-            {/* Close Button */}
-            <button
-                className="absolute top-2 right-2 text-xl font-bold text-gray-700"
-                onClick={onClose}
-            >
-                ×
-            </button>
-
-            {/* Product Details */}
-            <h1 className="text-xl font-bold">{product.title}</h1>
-            <img src={product.thumbnail} alt={product.title} className="w-full my-4" />
-            <p>{product.description}</p>
-            <p className="text-lg font-semibold">Price: ${product.price}</p>
-
-            {/* Quantity Buttons - Styled with Borders */}
-            <div className="flex items-center mt-4 space-x-4 border p-2 rounded">
-                <button 
-                    onClick={decreaseQuantity} 
-                    className="px-3 py-1 bg-gray-300 rounded text-lg font-bold border border-gray-500"
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+            <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg relative">
+                <button
+                    className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+                    onClick={() => setSelectedProduct(null)}
                 >
-                    -
+                    ✖
                 </button>
-                <span className="text-lg font-semibold">{quantity}</span>
-                <button 
-                    onClick={increaseQuantity} 
-                    className="px-3 py-1 bg-gray-300 rounded text-lg font-bold border border-gray-500"
-                >
-                    +
-                </button>
+
+                <img
+                    src={selectedProduct.thumbnail}
+                    alt={selectedProduct.title}
+                    className="w-full h-64 object-cover rounded-md mb-4"
+                />
+
+                <h2 className="text-2xl font-bold">{selectedProduct.title}</h2>
+                <p className="text-gray-700">{selectedProduct.description}</p>
+                <p className="text-black font-bold text-xl mt-2">${selectedProduct.price}</p>
+                <p className="text-gray-500 text-sm">Brand: {selectedProduct.brand}</p>
+                <p className="text-yellow-500 text-sm">⭐ {selectedProduct.rating}</p>
+
+               
+                <div className="flex justify-between items-center mt-4">
+                    
+                    <div className="flex items-center space-x-3">
+                        <button
+                            onClick={decreaseQuantity}
+                            className="px-3 py-2 text-lg bg-gray-200 hover:bg-gray-300 rounded-md"
+                        >
+                            -
+                        </button>
+                        <span className="text-lg font-bold">{quantity}</span>
+                        <button
+                            onClick={increaseQuantity}
+                            className="px-3 py-2 text-lg bg-gray-200 hover:bg-gray-300 rounded-md"
+                        >
+                            +
+                        </button>
+                    </div>
+
+                    {/* Add to Cart Button */}
+                    <button
+                        onClick={() => {
+                            addToCart(selectedProduct, quantity);
+                            setSelectedProduct(null); 
+                        }}
+                        className="px-4 py-2 border border-secondary text-black rounded-md hover:border-secondary hover:bg-secondary hover:text-white"
+                    >
+                        Add {quantity} to Cart
+                    </button>
+                </div>
             </div>
-
-            {/* Add to Cart Button */}
-            <button 
-                onClick={() => addToCart(product, quantity)} 
-                className="mt-4 w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
-            >
-                Add {quantity} to Cart
-            </button>
         </div>
     );
 };

@@ -16,12 +16,11 @@ const Navbar = () => {
 
     return (
         <nav className="flex flex-col md:flex-row items-center justify-between mb-8 mt-4">
-            {/* Logo */}
+
             <Link to="/">
                 <img src="/Images/cartify logo.png" alt="Cartify Logo" className="w-32" />
             </Link>
 
-            {/* Search Bar */}
             <div className="relative w-full md:w-1/2 mt-4 md:mt-0">
                 <input
                     type="text"
@@ -39,7 +38,6 @@ const Navbar = () => {
                 </svg>
             </div>
 
-            {/* Navigation Links */}
             <div className="flex items-center space-x-6 mt-4 md:mt-0">
                 <Link to="/buy" className={`hover:text-white pb-1 ${isActive("/buy")}`}>
                     Buy
