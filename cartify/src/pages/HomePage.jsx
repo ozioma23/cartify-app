@@ -69,7 +69,7 @@ const HomePage = ({ cart, addToCart: addToCartFromProps }) => {
                                         visibleProducts.map((product) => (
                                             <li
                                                 key={product.id}
-                                                className="flex flex-col lg:flex-row items-center lg:items-start justify-between h-full p-4 border rounded-md shadow bg-white cursor-pointer"
+                                                className="flex flex-col lg:flex-row items-center lg:items-start justify-between h-full p-4 border rounded-md shadow bg-white "
                                                 onClick={() => setSelectedProduct(product)}
                                             >
                                                 <img

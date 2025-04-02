@@ -1,43 +1,38 @@
-const CartPage = ({ cart }) => {  // <--- Added 'cart' as a prop
-
+const CartPage = ({ cart }) => {
     return (
-        <>
-            <div className="flex flex-col-reverse lg:flex-row items-center justify-center min-h-screen px-8 md:px-12 lg:px-24 bg-primary text-white">
-                <div className="flex flex-col text-center lg:text-left lg:p1-12 w-full lg:w-1/2">
-                    <div className="">
-                        <img
-                            src="/shapes/irregular1.svg"
-                            alt="Irregular Shape 1"
-                            className="absolute top-[-30px] lg:top-[20px] left-0 sm:left-[-15px] w-[300px] h-[250px] sm:w-[400px] sm:h-[350px] md:w-[500px] md:h-[450px] lg:w-[600px] lg:h-[500px] pointer-events-none"
-                        />
-
-                        <img
-                            src="/shapes/irregular2.svg"
-                            alt="Irregular Shape 2"
-                            className="absolute bottom-[-200px] md:bottom-[-20px] right-0 w-[300px] h-[250px] sm:w-[350px] sm:h-[300px] md:w-[400px] md:h-[350px] lg:w-[450px] lg:h-[400px] pointer-events-none"
-                        />
+      <div className="relative">
+        <div className="container mx-auto px-4 lg:px-20 lg:py- bg-primary text-white">
+          <div className="cart-page">
+            <h2 className="text-md md:text-xl lg:text-2xl text-left font-bold pt-8 pb-4">
+              Your <span className="text-secondary">Cart</span>
+            </h2>
+  
+            {cart.length === 0 ? (
+              <p>Your cart is empty.</p>
+            ) : (
+              <ul className="lg:space-y-4 grid grid-cols-2 pb-12 gap-8 lg:grid-cols-1">
+                {cart.map((product) => (
+                  <li key={product.id} className="flex flex-col lg:flex-row items-center lg:items-start justify-between h-full p-4 border rounded-md relative shadow bg-white">
+                    <img
+                      src={product.thumbnail}
+                      alt={product.title}
+                      className="w-40 h-30 object-cover"
+                    />
+  
+                    <div className="flex-start flex-col space-y-2 text-left w-full">
+                      <h3 className="font-semibold text-lg text-black">{product.title}</h3>
+                      <p className="text-sm text-black">Quantity: {product.quantity}</p>
+                      <p className="text-sm font-bold text-black">${product.price}</p>
+                      <p className="text-gray-500 text-sm">Brand: {product.brand}</p>
                     </div>
-                    <div className="cart-page">
-                        <h2>Your Cart</h2>
-                        {cart.length === 0 ? (
-                            <p>Your cart is empty.</p>
-                        ) : (
-                            <ul>
-                                {cart.map((product) => (
-                                    <li key={product.id}>
-                                        <img src={product.thumbnail} alt={product.title} />
-                                        <h3>{product.title}</h3>
-                                        <p>Quantity: {product.quantity}</p>
-                                        <p>${product.price * product.quantity}</p>
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
-                    </div>
-                </div>
-            </div>
-        </>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+      </div>
     );
-};
-
-export default CartPage;
+  };
+  
+  export default CartPage;
