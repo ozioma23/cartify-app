@@ -6,6 +6,7 @@ import LoginPage from "./pages/LoginPage";
 import Signup from './pages/Signup';
 import HomePage from './pages/HomePage';
 import ProductDetails from './pages/ProductDetails';
+import Cart from './pages/Cart';
 
 import './App.css'
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/buy" element={<HomePage />} />  
           <Route path="/sell" element={<div>Sell Page (Coming Soon)</div>} />
           <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/Cart" element={<Cart />} />
         </Routes>
       </Router>
     </UserContextProvider>   
