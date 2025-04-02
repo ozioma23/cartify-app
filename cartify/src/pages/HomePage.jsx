@@ -4,10 +4,10 @@ import Navbar from "../components/Navbar";
 import ProductCard from "../components/ProductCard";
 import ProductDetails from "./ProductDetails";
 
-const HomePage = () => {
+const HomePage = ({ cart, addToCart: addToCartFromProps }) => {  
     const [products, setProducts] = useState([]);
     const [expandedCategories, setExpandedCategories] = useState({});
-    const [cart, setCart] = useState([]);
+    const [localcart, setLocalCart] = useState(cart || []);  
     const [loading, setLoading] = useState(true);
     const [selectedProduct, setSelectedProduct] = useState(null);
 
@@ -45,14 +45,15 @@ const HomePage = () => {
     };
 
     const addToCart = (product) => {
-        setCart((prevCart) => [...prevCart, product]);
+        setLocalCart((prevCart) => [...prevCart, product]);
+        addToCartFromProps(product);  
         alert(`${product.title} added to cart!`);
     };
 
     return (
         <div className="relative">
             <div className="container mx-auto px-4 lg:px-20 py-8 lg:py-8 bg-primary text-white">
-                <Navbar />
+            <Navbar cart={localcart} /> 
 
                 {loading ? <p>Loading products...</p> : (
                     Object.keys(categories).map((categoryName, index) => {
@@ -125,7 +126,7 @@ const HomePage = () => {
             </div>
 
             {selectedProduct && (
-                <ProductDetails selectedProduct={selectedProduct} setSelectedProduct={setSelectedProduct} />
+                <ProductDetails selectedProduct={selectedProduct} setSelectedProduct={setSelectedProduct} addToCart={addToCart} />
             )}
         </div>
     );

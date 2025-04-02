@@ -2,7 +2,8 @@ import { useSearchParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar =  ({ cart }) => {
+    const cartItemCount = cart.length;
     const location = useLocation();
     const isActive = (path) => location.pathname === path ? "border-b-2 border-secondary" : "text-gray-300";
 
@@ -47,6 +48,9 @@ const Navbar = () => {
                 </Link>
                 <Link to="/cart" className="flex items-center space-x-2">
                     <img src="/Images/cart.png" alt="Cart" className="w-6 h-6" />
+                    {cartItemCount > 0 && (
+          <span className="cart-badge">{cartItemCount}</span> 
+        )}
                 </Link>
             </div>
         </nav>
