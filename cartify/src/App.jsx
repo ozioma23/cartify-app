@@ -1,21 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { UserContextProvider } from "./context/UserContext";  
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 import Signup from './pages/Signup';
 import HomePage from './pages/HomePage';
-import ProductDetails from './pages/ProductDetails';
+import Checkout from './pages/Checkout';
 import CartPage from './pages/Cart';
 import './App.css';
 
 function App() {
-  const [cart, setCart] = useState([]);  
+  const [cart, setCart] = useState([]);
+
+  // Persist cart changes to localStorage if desired
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = (product, quantity) => {
     setCart((prevCart) => {
       const existingProduct = prevCart.find((item) => item.id === product.id);
-
       if (existingProduct) {
         return prevCart.map((item) =>
           item.id === product.id
@@ -37,8 +41,9 @@ function App() {
           <Route path="/Signup" element={<Signup />} />
           <Route path="/buy" element={<HomePage cart={cart} addToCart={addToCart} />} />
           <Route path="/sell" element={<div>Sell Page (Coming Soon)</div>} />
-          <Route path="/product/:id" element={<ProductDetails addToCart={addToCart} />} />
-          <Route path="/Cart" element={<CartPage cart={cart} />} />  
+          {/* Removed /product/:id route to avoid conflict with the modal view */}
+          <Route path="/cart" element={<CartPage cart={cart} setCart={setCart} />} />
+          <Route path="/checkout" element={<Checkout cart={cart} setCart={setCart} />} />
         </Routes>
       </Router>
     </UserContextProvider>

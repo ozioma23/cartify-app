@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import ProductCard from "../components/ProductCard";
 import ProductDetails from "./ProductDetails";
 
-const HomePage = ({ cart, addToCart: addToCartFromProps }) => {  
+const HomePage = ({ cart, addToCart }) => {
     const [products, setProducts] = useState([]);
     const [expandedCategories, setExpandedCategories] = useState({});
-    const [localcart, setLocalCart] = useState(cart || []);  
     const [loading, setLoading] = useState(true);
     const [selectedProduct, setSelectedProduct] = useState(null);
 
@@ -44,16 +42,15 @@ const HomePage = ({ cart, addToCart: addToCartFromProps }) => {
         "Fashion & Accessories": filteredProducts.filter(p => ["fragrances", "skincare"].includes(p.category)),
     };
 
-    const addToCart = (product) => {
-        setLocalCart((prevCart) => [...prevCart, product]);
-        addToCartFromProps(product);  
-        alert(`${product.title} added to cart!`);
+   
+    const handleAddToCart = (product, quantity = 1) => {
+      addToCart(product, quantity);
     };
 
     return (
         <div className="relative">
             <div className="container mx-auto px-4 lg:px-20 py-8 lg:py-8 bg-primary text-white">
-            <Navbar cart={localcart} /> 
+                <Navbar cart={cart} /> 
 
                 {loading ? <p>Loading products...</p> : (
                     Object.keys(categories).map((categoryName, index) => {
@@ -69,7 +66,7 @@ const HomePage = ({ cart, addToCart: addToCartFromProps }) => {
                                         visibleProducts.map((product) => (
                                             <li
                                                 key={product.id}
-                                                className="flex flex-col lg:flex-row items-center lg:items-start justify-between h-full p-4 border rounded-md shadow bg-white "
+                                                className="flex flex-col lg:flex-row items-center lg:items-start justify-between h-full p-4 border rounded-md shadow bg-white"
                                                 onClick={() => setSelectedProduct(product)}
                                             >
                                                 <img
@@ -90,7 +87,7 @@ const HomePage = ({ cart, addToCart: addToCartFromProps }) => {
                                                     <button
                                                         onClick={(e) => {
                                                             e.stopPropagation(); 
-                                                            addToCart(product);
+                                                            handleAddToCart(product);
                                                         }}
                                                         className="mt-2 md:mt-auto md:self-start px-4 py-2 border border-secondary text-black rounded-md hover:border-secondary hover:bg-secondary hover:text-white"
                                                     >
@@ -126,7 +123,11 @@ const HomePage = ({ cart, addToCart: addToCartFromProps }) => {
             </div>
 
             {selectedProduct && (
-                <ProductDetails selectedProduct={selectedProduct} setSelectedProduct={setSelectedProduct} addToCart={addToCart} />
+                <ProductDetails 
+                  selectedProduct={selectedProduct} 
+                  setSelectedProduct={setSelectedProduct} 
+                  addToCart={handleAddToCart} 
+                />
             )}
         </div>
     );

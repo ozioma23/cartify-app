@@ -1,9 +1,9 @@
-import { useSearchParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { useSearchParams, useLocation, Link } from "react-router-dom";
 
-const Navbar =  ({ cart }) => {
-    const cartItemCount = cart.length;
+const Navbar = ({ cart }) => {
+    console.log("Updated Cart:", cart); // Debugging
+
+    const cartItemCount = cart.reduce((total, item) => total + item.quantity, 0); // Ensure correct count
     const location = useLocation();
     const isActive = (path) => location.pathname === path ? "border-b-2 border-secondary" : "text-gray-300";
 
@@ -17,7 +17,6 @@ const Navbar =  ({ cart }) => {
 
     return (
         <nav className="flex flex-col md:flex-row items-center justify-between mb-8 mt-4">
-
             <Link to="/">
                 <img src="/Images/cartify logo.png" alt="Cartify Logo" className="w-32" />
             </Link>
@@ -49,8 +48,10 @@ const Navbar =  ({ cart }) => {
                 <Link to="/cart" className="flex items-center space-x-2">
                     <img src="/Images/cart.png" alt="Cart" className="w-6 h-6" />
                     {cartItemCount > 0 && (
-          <span className="cart-badge">{cartItemCount}</span> 
-        )}
+                        <span className="cart-badge bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                            {cartItemCount}
+                        </span> 
+                    )}
                 </Link>
             </div>
         </nav>
