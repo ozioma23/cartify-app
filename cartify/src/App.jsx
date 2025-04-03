@@ -7,6 +7,7 @@ import Signup from './pages/Signup';
 import HomePage from './pages/HomePage';
 import Checkout from './pages/Checkout';
 import CartPage from './pages/Cart';
+import DeliveryPage from './pages/Deliverypage';
 import './App.css';
 
 function App() {
@@ -41,9 +42,9 @@ function App() {
           <Route path="/Signup" element={<Signup />} />
           <Route path="/buy" element={<HomePage cart={cart} addToCart={addToCart} />} />
           <Route path="/sell" element={<div>Sell Page (Coming Soon)</div>} />
-          {/* Removed /product/:id route to avoid conflict with the modal view */}
           <Route path="/cart" element={<CartPage cart={cart} setCart={setCart} />} />
           <Route path="/checkout" element={<Checkout cart={cart} setCart={setCart} />} />
+          <Route path="/deliveryPage" element={<DeliveryPage />} />
         </Routes>
       </Router>
     </UserContextProvider>

@@ -12,7 +12,7 @@ const Checkout = ({ cart, setCart }) => {
         alert("Order placed successfully!");
         setCart([]);
         localStorage.removeItem("cart");
-        navigate("/buy");
+        navigate("/deliveryPage");
     };
   
     return (
@@ -21,19 +21,6 @@ const Checkout = ({ cart, setCart }) => {
                 <h2 className="text-md md:text-xl lg:text-2xl text-left font-bold pt-8 pb-4">
                     Checkout <span className="text-secondary">Summary</span>
                 </h2>
-                <div className="">
-                            <img
-                                src="/shapes/irregular1.svg"
-                                alt="Irregular Shape 1"
-                                className="absolute top-[-30px] lg:top-[20px] left-0 sm:left-[-15px] w-[300px] h-[250px] sm:w-[400px] sm:h-[350px] md:w-[500px] md:h-[450px] lg:w-[600px] lg:h-[500px] pointer-events-none"
-                            />
-
-                            <img
-                                src="/shapes/irregular2.svg"
-                                alt="Irregular Shape 2"
-                                className="absolute bottom-[-200px] md:bottom-[-20px] right-0 w-[300px] h-[250px] sm:w-[350px] sm:h-[300px] md:w-[400px] md:h-[350px] lg:w-[450px] lg:h-[400px] pointer-events-none"
-                            />
-                        </div>
     
                 {cart.length === 0 ? (
                     <div className="text-center py-12">
@@ -123,9 +110,9 @@ const Checkout = ({ cart, setCart }) => {
     
                             <button
                                 onClick={handleCheckout}
-                                className="w-full mt-8 bg-secondary text-white py-3 rounded-md hover:bg-secondary-dark transition-colors"
-                            >
-                                Confirm & Place Order
+                                 className="mx-auto block w-1/2 bg-secondary text-white px-6 py-4 mb-8 mt-8 rounded-md hover:bg-secondary-dark transition-colors">
+                        
+                                Checkout
                             </button>
                         </div>
                     </div>

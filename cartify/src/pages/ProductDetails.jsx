@@ -12,7 +12,7 @@ const ProductDetails = ({ selectedProduct, setSelectedProduct, addToCart }) => {
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-4">
-            <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full max-h-[90vh] overflow-y-auto">
+            <div className="bg-white relative p-6 rounded-lg shadow-lg max-w-lg w-full max-h-[90vh] overflow-y-auto">
                 <button
                     className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl"
                     onClick={() => setSelectedProduct(null)}
