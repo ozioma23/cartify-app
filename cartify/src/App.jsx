@@ -13,7 +13,6 @@ import './App.css';
 function App() {
   const [cart, setCart] = useState([]);
 
-  // Persist cart changes to localStorage if desired
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);

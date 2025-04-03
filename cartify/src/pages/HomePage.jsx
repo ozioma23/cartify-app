@@ -72,10 +72,10 @@ const HomePage = ({ cart, addToCart }) => {
                                                 <img
                                                     src={product.thumbnail}
                                                     alt={product.title}
-                                                    className=" w-20 h-20 lg:w-32 lg:h-32 object-cover rounded-md mx-auto md:mx-0 md:mr-4"
+                                                    className="lg:w-32 lg:h-32 object-cover rounded-md mx-auto md:mx-0 md:mr-4"
                                                 />
 
-                                                <div className="flex flex-col justify-between flex-grow">
+                                                <div className=" w-28 h-18 flex flex-col justify-between flex-grow">
                                                     <div>
                                                         <h3 className="font-semibold text-lg text-black">{product.title}</h3>
                                                         <p className="text-sm text-gray-600 line-clamp-3">{product.description}</p>
@@ -89,7 +89,7 @@ const HomePage = ({ cart, addToCart }) => {
                                                             e.stopPropagation(); 
                                                             handleAddToCart(product);
                                                         }}
-                                                        className="mt-2 md:mt-auto md:self-start px-4 py-2 border border-secondary text-black rounded-md hover:border-secondary hover:bg-secondary hover:text-white"
+                                                        className="mt-2 md:mt-auto md:self-start px-4 py-2 border border-secondary text-black  text-sm rounded-md hover:border-secondary hover:bg-secondary hover:text-white"
                                                     >
                                                         Add to Cart
                                                     </button>

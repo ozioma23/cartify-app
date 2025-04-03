@@ -16,7 +16,7 @@ const Checkout = ({ cart, setCart }) => {
   
     return (
         <div className="relative min-h-screen">
-            <div className="container mx-auto px-4 lg:px-20 lg:py-8 bg-primary text-white">
+            <div className="container pb-2 mx-auto px-4 lg:px-20 lg:py-8 bg-primary text-white">
                 <h2 className="text-md md:text-xl lg:text-2xl text-left font-bold pt-8 pb-4">
                     Checkout <span className="text-secondary">Summary</span>
                 </h2>
@@ -109,7 +109,7 @@ const Checkout = ({ cart, setCart }) => {
     
                             <button
                                 onClick={handleCheckout}
-                                 className="mx-auto block w-1/2 bg-secondary text-white px-6 py-4 mb-8 mt-8 rounded-md hover:bg-secondary-dark transition-colors">
+                                 className="mx-auto block lg:w-1/2 bg-secondary text-white px-6 py-4 mb-8 mt-8 rounded-md by-4 hover:bg-secondary-dark transition-colors">
                         
                                 Checkout
                             </button>

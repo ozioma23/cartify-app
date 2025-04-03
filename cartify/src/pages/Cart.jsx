@@ -54,7 +54,7 @@ const CartPage = ({ cart, setCart }) => {
                         <div className="flex justify-end mt-4 ">
                             <button
                                 onClick={() => navigate("/checkout")}
-                                className="mx-auto block w-1/2 bg-secondary text-white px-6 py-4 mb-8 rounded-md hover:bg-opacity-80"
+                                className="mx-auto block lg:w-1/2 bg-secondary text-white px-6 py-4 mb-8 rounded-md hover:bg-opacity-80"
                             >
                                Proceed to Checkout
                             </button>
