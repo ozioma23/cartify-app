@@ -118,7 +118,7 @@ const LoginPage = () => {
                         </div>
 
 
-                        <p className=" mt-0 text-center pb-10 mt-16  lg:mt-4 text-lg md:text-lg lg:text-xl">
+                        <p className=" mt-0 text-center pb-10 mt-16  lg:mt-4 text-md md:text-lg lg:text-xl">
                             Don't have an account?
                             <span onClick={handleSignUp} className="text-secondary cursor-pointer"> Sign Up</span>
                         </p>

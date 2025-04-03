@@ -9,7 +9,6 @@ const Checkout = ({ cart, setCart }) => {
     );
   
     const handleCheckout = () => {
-        alert("Order placed successfully!");
         setCart([]);
         localStorage.removeItem("cart");
         navigate("/deliveryPage");

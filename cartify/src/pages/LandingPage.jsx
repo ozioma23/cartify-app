@@ -54,7 +54,7 @@ const LandingPage = () => {
                         </button>
                     </div>
 
-                    <p className="pb-10 mt-16 md:mt-24 text-lg md:text-xl lg:text-2xl">
+                    <p className="pb-10 mt-16 md:mt-24 text-md md:text-xl lg:text-2xl">
                         Don't have an account?
                         <span onClick={handleSignUp} className="text-secondary cursor-pointer"> Sign Up</span>
                     </p>

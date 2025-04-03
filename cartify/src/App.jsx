@@ -6,8 +6,8 @@ import LoginPage from "./pages/LoginPage";
 import Signup from './pages/Signup';
 import HomePage from './pages/HomePage';
 import Checkout from './pages/Checkout';
-import CartPage from './pages/Cart';
-import DeliveryPage from './pages/Deliverypage';
+import CartPage from './pages/Cart'
+import DeliveryPage from './pages/DeliveryPages';
 import './App.css';
 
 function App() {

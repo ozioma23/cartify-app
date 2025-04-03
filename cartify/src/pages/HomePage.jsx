@@ -72,7 +72,7 @@ const HomePage = ({ cart, addToCart }) => {
                                                 <img
                                                     src={product.thumbnail}
                                                     alt={product.title}
-                                                    className="w-36 h-36 object-cover rounded-md mx-auto md:mx-0 md:mr-4"
+                                                    className=" w-20 h-20 lg:w-32 lg:h-32 object-cover rounded-md mx-auto md:mx-0 md:mr-4"
                                                 />
 
                                                 <div className="flex flex-col justify-between flex-grow">
