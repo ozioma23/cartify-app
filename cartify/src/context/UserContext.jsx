@@ -2,31 +2,39 @@ import { createContext, useState, useEffect } from "react";
 
 export const UserContext = createContext();
 
- export const UserContextProvider = ({ children }) => {
+export const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isGuest, setIsGuest] = useState(false);
 
-  // Load user from localStorage (if already logged in)
   useEffect(() => {
     const savedUser = localStorage.getItem("cartifyUser");
+    const savedGuest = localStorage.getItem("isGuest");
     if (savedUser) {
       setUser(JSON.parse(savedUser));
     }
+    if (savedGuest) {
+      setIsGuest(JSON.parse(savedGuest));
+    }
   }, []);
 
-  // Save user to localStorage when they log in
   const loginUser = (userData) => {
     setUser(userData);
+    setIsGuest(false);
     localStorage.setItem("cartifyUser", JSON.stringify(userData));
+    localStorage.setItem("isGuest", JSON.stringify(false));
   };
 
   const logoutUser = () => {
     setUser(null);
+    setIsGuest(false);
     localStorage.removeItem("cartifyUser");
+    localStorage.removeItem("isGuest");
   };
 
   const continueAsGuest = () => {
+    setUser(null);
     setIsGuest(true);
+    localStorage.setItem("isGuest", JSON.stringify(true));
   };
 
   return (

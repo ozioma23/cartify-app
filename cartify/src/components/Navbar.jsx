@@ -1,9 +1,13 @@
 import { useSearchParams, useLocation, Link } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../context/UserContext";
+
 
 const Navbar = ({ cart }) => {
-    console.log("Updated Cart:", cart); // Debugging
+    console.log("Updated Cart:", cart); 
 
-    const cartItemCount = cart.reduce((total, item) => total + item.quantity, 0); // Ensure correct count
+    const { user, isGuest } = useContext(UserContext);
+    const cartItemCount = cart.reduce((total, item) => total + item.quantity, 0); 
     const location = useLocation();
     const isActive = (path) => location.pathname === path ? "border-b-2 border-secondary" : "text-gray-300";
 
@@ -16,7 +20,16 @@ const Navbar = ({ cart }) => {
     };
 
     return (
+        <>
+        <div className="w-full text-white text-center py-2">
+        {isGuest
+          ? "Welcome, Guest!"
+          : user
+          ? `Welcome User!`
+          : "Welcome, please log in"}
+        </div>
         <nav className="flex flex-col md:flex-row items-center justify-between mb-8 mt-4">
+        
             <Link to="/">
                 <img src="/Images/cartify logo.png" alt="Cartify Logo" className="w-32" />
             </Link>
@@ -55,6 +68,7 @@ const Navbar = ({ cart }) => {
                 </Link>
             </div>
         </nav>
+        </>
     );
 };
 
