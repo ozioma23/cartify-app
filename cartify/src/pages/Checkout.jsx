@@ -17,7 +17,8 @@ const Checkout = ({ cart, setCart }) => {
   
     return (
         <div className="overflow-auto lg:overflow-hidden sm:overflow-visible w-screen min-h-screen relative m-0 p-0">
-            <div className="w-full px-16 py-8 bg-primary text-white">
+            
+            <div className="w-full px-4 sm:px-8 md:px-12 lg:px-24 py-8 bg-primary text-white">
               
                 <div className="flex items-center space-x-2 pt-8 pb-4">
                     <BackButton />
@@ -43,24 +44,24 @@ const Checkout = ({ cart, setCart }) => {
                                 {cart.map((product) => (
                                     <li 
                                         key={product.id} 
-                                        className="flex items-center justify-between p-4 bg-white rounded-md shadow"
+                                        className="flex flex-col sm:flex-row items-center justify-between py-4 pr-8 bg-white rounded-md shadow gap-4"
                                     >
-                                        <div className="flex items-center">
-                                            <img
-                                                src={product.thumbnail}
-                                                alt={product.title}
-                                                className="w-20 h-20 object-cover rounded-md mr-4"
+                                        <div className="flex items-center gap-4 w-full">
+                                            <img 
+                                                src={product.thumbnail} 
+                                                alt={product.title} 
+                                                className="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-md"
                                             />
-                                            <div>
+                                            <div className="text-left flex-1">
                                                 <h3 className="font-semibold text-black">{product.title}</h3>
-                                                <p className="text-sm text-gray-600">
-                                                    {product.quantity || 1} × ${product.price}
-                                                </p>
+                                                <div className="flex sm:flex-col gap-2 sm:gap-4 sm:items-start">
+                                                    <p className="text-sm text-gray-600 sm:mr-8">{product.quantity || 1} × ${product.price}</p>
+                                                    <p className="font-bold text-black px-4">
+                                                        ${(product.price * (product.quantity || 1)).toFixed(2)}
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
-                                        <p className="font-bold text-black">
-                                            ${(product.price * (product.quantity || 1)).toFixed(2)}
-                                        </p>
                                     </li>
                                 ))}
                             </ul>

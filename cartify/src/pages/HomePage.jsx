@@ -48,7 +48,7 @@ const HomePage = ({ cart, addToCart }) => {
 
     return (
         <div className="overflow-auto lg:overflow-hidden sm:overflow-visible w-screen min-h-screen relative m-0 p-0">
-            <div className="w-full px-16 py-8 bg-primary text-white">
+            <div className="w-full px-4 sm:px-6 md:px-8 lg:px-16 py-8 bg-primary text-white">
                 <Navbar cart={cart} /> 
 
                 {loading ? <p>Loading products...</p> : (

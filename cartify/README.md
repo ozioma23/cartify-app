@@ -1,4 +1,4 @@
-  Cartify-App
+ # Cartify-App
 
 Cartify is a modern e-commerce web application built with React and Vite. It provides users with a seamless shopping experience, including product browsing, detailed product views, cart management, and a smooth checkout process. Users can also log in or continue as guests.
 
@@ -30,6 +30,7 @@ cartify-app/
 │── src/                        # Source code
 │   ├── components/             # Reusable UI components
 │   │   ├── Navbar.jsx          # Navigation bar
+│   │   ├── BackButton.jsx      # Back button icon 
 │   │   ├── ProductCard.jsx     # Product card component
 │   ├── pages/                  # Individual pages of the app
 │   │   ├── Landing.jsx         # Landing page (welcomes users, directs to login)
@@ -51,3 +52,26 @@ cartify-app/
 │── package.json                # Project dependencies & scripts
 │── vite.config.js              # Vite configuration
 │── README.md                   # Project overview, setup, usage instructions
+
+# How to Install and Run the Project
+
+Follow these steps to get *Cartify* running locally on your machine:
+
+1. Clone the Repository
+
+git clone https://github.com/your-username/cartify-app.git
+cd cartify-app
+2. Install Dependencies
+Make sure you have Node.js installed, then run:
+npm install
+
+3. Start the Development Server
+npm run dev
+This will start the app on http://localhost:5173 (or the port Vite assigns).
+
+4. Build for Production (Optional)
+To create a production-ready build:
+npm run build
+
+To preview the build:
+npm run preview

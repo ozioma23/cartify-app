@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { UserContextProvider } from "./context/UserContext";  
-import { SearchProvider } from "./context/SearchContext"; 
+import { UserContextProvider } from "./context/UserContext";
+import { SearchProvider } from "./context/SearchContext";
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 import Signup from './pages/Signup';
@@ -16,7 +16,7 @@ function App() {
     const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : [];
   });
-  const [message, setMessage] = useState("");  
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -36,10 +36,10 @@ function App() {
       }
     });
 
-  
+
     setMessage("Product added to cart!");
 
-    
+
     setTimeout(() => {
       setMessage("");
     }, 3000);
@@ -54,7 +54,11 @@ function App() {
             <Route path="/LoginPage" element={<LoginPage />} />
             <Route path="/Signup" element={<Signup />} />
             <Route path="/buy" element={<HomePage cart={cart} addToCart={addToCart} />} />
-            <Route path="/sell" element={<div>Sell Page (Coming Soon)</div>} />
+            <Route path="/sell" element={
+              <div className="flex items-center justify-center">
+                <span className="text-xl font-bold">Sell Page (Coming Soon)</span>
+              </div>
+            } />
             <Route path="/cart" element={<CartPage cart={cart} setCart={setCart} />} />
             <Route path="/checkout" element={<Checkout cart={cart} setCart={setCart} />} />
             <Route path="/deliveryPage" element={<DeliveryPage />} />

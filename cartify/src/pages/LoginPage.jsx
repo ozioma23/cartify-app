@@ -47,9 +47,8 @@ const LoginPage = () => {
 
   return (
     <>
-      <div className="w-screen h-screen flex flex-col-reverse lg:flex-row items-center justify-center bg-primary text-white box-border">
-      <div className="flex flex-col text-center lg:text-left w-full lg:w-1/2 px- sm:px-8 md:px-12">
-
+      <div className="w-screen h-screen flex flex-col-reverse lg:flex-row items-center justify-center bg-primary text-white box-border lg:pb-10">
+        <div className="flex flex-col text-center lg:text-left w-full lg:w-1/2 px-4 sm:px-8 md:px-12">
           <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold mt-4 lg:mt-20 lg:mb-4 text-left">
             Login to your <br />
             <span className="text-blue-400 leading-loose bg-gradient-to-r from-white via-blue-400 to-blue-600 text-transparent bg-clip-text">
@@ -57,6 +56,7 @@ const LoginPage = () => {
             </span>
           </h1>
           <div>
+
             <div className="flex flex-col space-y-4 mb-8">
               {error && <p className="text-red-500 text-sm">{error}</p>}
 
@@ -108,14 +108,17 @@ const LoginPage = () => {
 
             <p className="mt-0 text-center pb-10 mt-16 lg:mt-4 text-md md:text-lg lg:text-xl">
               Don't have an account?
-              <span onClick={handleSignUp} className="text-secondary cursor-pointer hover:text-blue-300">
+              <span
+                onClick={handleSignUp}
+                className="text-secondary cursor-pointer hover:text-blue-300"
+              >
                 {" "}
                 Sign Up
               </span>
             </p>
           </div>
         </div>
-        <div className="mt-8 lg:mt-0 lg:pb-20 flex justify-center lg:justify-end w-full lg:w-1/2 lg:pr-16 xl:pr-28">
+        <div className="mt-24 lg:mt-0 lg:pb-20 flex justify-center lg:justify-end w-full lg:w-1/2 lg:pr-16 xl:pr-28">
           <img
             src="/Images/Retail markdown.png"
             alt="shopping bag"
