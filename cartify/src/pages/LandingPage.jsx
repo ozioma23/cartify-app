@@ -25,7 +25,7 @@ const LandingPage = () => {
 
   return (
     <>
-      <div className="flex flex-col-reverse lg:flex-row items-center justify-center min-h-screen px-8 md:px-12 lg:px-24 bg-primary text-white">
+      <div className="overflow-auto lg:overflow-hidden sm:overflow-visible w-full flex flex-col-reverse lg:flex-row items-center justify-center min-h-screen px-8 md:px-12 lg:px-24 bg-primary text-white">
         <div className="flex flex-col text-left lg:text-left lg:p1-12 w-full lg:w-1/2">
           <h1 className="text-2xl md:text-5xl lg:text-6xl font-bold fade-in-text">
             Welcome to

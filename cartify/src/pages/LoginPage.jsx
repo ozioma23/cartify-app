@@ -47,7 +47,7 @@ const LoginPage = () => {
 
   return (
     <>
-      <div className="flex flex-col-reverse lg:flex-row items-center justify-center min-h-screen px-8 md:px-12 lg:px-24 bg-primary text-white">
+      <div className="overflow-auto lg:overflow-hidden sm:overflow-visible w-full sm:w-full md:w-full lg:w-full flex flex-col-reverse lg:flex-row items-center justify-center min-h-screen px-8 md:px-12 lg:px-24 bg-primary text-white">
         <div className="flex flex-col text-center lg:text-left lg:p1-12 w-full lg:w-1/2">
           <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold mt-4 lg:mt-20 lg:mb-4 text-left">
             Login to your <br />

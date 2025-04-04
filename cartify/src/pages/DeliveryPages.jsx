@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 
+
 const DeliveryPage = () => {
     return (
-        <div className="flex flex-col items-center justify-center h-screen bg-primary text-center">
-            <div className="p-6 rounded-lg shadow-md">
+        <div className="overflow-auto lg:overflow-hidden sm:overflow-visible w-full sm:w-full md:w-full lg:w-full flex flex-col items-center justify-center min-h-screen bg-primary text-center">
+            <div className="p-2 mb-12 rounded-lg shadow-md">
                 <h2 className="text-lg lg:text-4xl font-bold mt-16 text-white">Checkout Complete</h2>
                 
                
@@ -15,11 +16,11 @@ const DeliveryPage = () => {
                     />
                 </div>
 
-                <p className="text-white mb-6 lg:text-2xl text-lg">Delivery in Progress... </p>
+                <p className="text-white mb-4 lg:text-2xl text-lg">Delivery in Progress... </p>
 
                 <Link 
                     to="/buy"  
-                    className="bg-secondary text-white px-6 py-4 mt-2 mb-12 rounded-md hover:bg-opacity-80 block mx-auto w-1/2"
+                    className="bg-secondary text-white px-6 py-2 mt-2 mb-4 rounded-md hover:bg-opacity-80 block mx-auto w-1/2"
                 >
                     Done
                 </Link>

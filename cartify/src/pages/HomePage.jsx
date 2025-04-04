@@ -48,7 +48,7 @@ const HomePage = ({ cart, addToCart }) => {
     };
 
     return (
-        <div className="relative">
+        <div className="overflow-auto lg:overflow-hidden sm:overflow-visible w-full sm:w-full md:w-full lg:w-full min-h-screen relative">
             <div className="container mx-auto px-4 lg:px-20 py-8 lg:py-8 bg-primary text-white">
                 <Navbar cart={cart} /> 
 

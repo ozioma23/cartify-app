@@ -16,6 +16,7 @@ function App() {
     const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : [];
   });
+  const [message, setMessage] = useState("");  
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -27,13 +28,21 @@ function App() {
       if (existingProduct) {
         return prevCart.map((item) =>
           item.id === product.id
-            ? { ...item, quantity: item.quantity + quantity } 
+            ? { ...item, quantity: item.quantity + quantity }
             : item
         );
       } else {
         return [...prevCart, { ...product, quantity }];
       }
     });
+
+  
+    setMessage("Product added to cart!");
+
+    
+    setTimeout(() => {
+      setMessage("");
+    }, 3000);
   };
 
   return (
@@ -50,6 +59,12 @@ function App() {
             <Route path="/checkout" element={<Checkout cart={cart} setCart={setCart} />} />
             <Route path="/deliveryPage" element={<DeliveryPage />} />
           </Routes>
+
+          {message && (
+            <div className="fixed top-5 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-2 rounded-lg shadow-md">
+              {message}
+            </div>
+          )}
         </Router>
       </SearchProvider>
     </UserContextProvider>

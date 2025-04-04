@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import BackButton from '../components/BackButton';
+
 
 const Checkout = ({ cart, setCart }) => {
     const navigate = useNavigate();
@@ -15,11 +17,15 @@ const Checkout = ({ cart, setCart }) => {
     };
   
     return (
-        <div className="relative min-h-screen">
+        <div className="overflow-auto lg:overflow-hidden sm:overflow-visible relative min-h-screen w-full sm:w-full md:w-full lg:w-full">
             <div className="container pb-2 mx-auto px-4 lg:px-20 lg:py-8 bg-primary text-white">
-                <h2 className="text-md md:text-xl lg:text-2xl text-left font-bold pt-8 pb-4">
-                    Checkout <span className="text-secondary">Summary</span>
-                </h2>
+              
+                <div className="flex items-center space-x-2 pt-8 pb-4">
+                    <BackButton />
+                    <h2 className="text-md md:text-xl lg:text-2xl text-left font-bold">
+                        Checkout <span className="text-secondary">Summary</span>
+                    </h2>
+                </div>
     
                 {cart.length === 0 ? (
                     <div className="text-center py-12">
@@ -117,8 +123,9 @@ const Checkout = ({ cart, setCart }) => {
                     </div>
                 )}
             </div>
+    
         </div>
     );
 };
 
-export default Checkout;
+export default Checkout

@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 
 
+
 const Navbar = ({ cart }) => {
     console.log("Updated Cart:", cart); 
 
@@ -68,6 +69,7 @@ const Navbar = ({ cart }) => {
                 </Link>
             </div>
         </nav>
+    
         </>
     );
 };

@@ -1,14 +1,21 @@
 import { useNavigate } from "react-router-dom";
+import BackButton from '../components/BackButton';
 
 const CartPage = ({ cart, setCart }) => {
     const navigate = useNavigate();
 
+    
+
     return (
-        <div className="relative">
+        <div className="overflow-auto lg:overflow-hidden sm:overflow-visible relative w-full w-full sm:w-full md:w-full lg:w-full">
             <div className="container mx-auto px-4 lg:px-20 lg:py-8 bg-primary text-white">
-                <h2 className="text-md md:text-xl lg:text-2xl text-left font-bold pt-8 pb-4">
-                    Your <span className="text-secondary">Cart</span>
-                </h2>
+               
+                <div className="flex items-center mb-4">
+                    <BackButton />
+                    <h2 className="text-md md:text-xl lg:text-2xl text-left font-bold">
+                        Your <span className="text-secondary">Cart</span>
+                    </h2>
+                </div>
 
                 <div className="">
                             <img
