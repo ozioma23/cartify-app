@@ -42,14 +42,13 @@ const HomePage = ({ cart, addToCart }) => {
         "Fashion & Accessories": filteredProducts.filter(p => ["fragrances", "skincare"].includes(p.category)),
     };
 
-   
     const handleAddToCart = (product, quantity = 1) => {
       addToCart(product, quantity);
     };
 
     return (
-        <div className="overflow-auto lg:overflow-hidden sm:overflow-visible w-full sm:w-full md:w-full lg:w-full min-h-screen relative">
-            <div className="container mx-auto px-4 lg:px-20 py-8 lg:py-8 bg-primary text-white">
+        <div className="overflow-auto lg:overflow-hidden sm:overflow-visible w-screen min-h-screen relative m-0 p-0">
+            <div className="w-full px-16 py-8 bg-primary text-white">
                 <Navbar cart={cart} /> 
 
                 {loading ? <p>Loading products...</p> : (
@@ -75,7 +74,7 @@ const HomePage = ({ cart, addToCart }) => {
                                                     className="lg:w-32 lg:h-32 object-cover rounded-md mx-auto md:mx-0 md:mr-4"
                                                 />
 
-                                                <div className=" w-28 h-18 flex flex-col justify-between flex-grow">
+                                                <div className="w-28 h-18 flex flex-col justify-between flex-grow">
                                                     <div>
                                                         <h3 className="font-semibold text-lg text-black">{product.title}</h3>
                                                         <p className="text-sm text-gray-600 line-clamp-3">{product.description}</p>
@@ -89,7 +88,7 @@ const HomePage = ({ cart, addToCart }) => {
                                                             e.stopPropagation(); 
                                                             handleAddToCart(product);
                                                         }}
-                                                        className="mt-2 md:mt-auto md:self-start px-4 py-2 border border-secondary text-black  text-sm rounded-md hover:border-secondary hover:bg-secondary hover:text-white"
+                                                        className="mt-2 md:mt-auto md:self-start px-4 py-2 border border-secondary text-black text-sm rounded-md hover:border-secondary hover:bg-secondary hover:text-white"
                                                     >
                                                         Add to Cart
                                                     </button>

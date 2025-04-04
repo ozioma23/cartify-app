@@ -14,19 +14,19 @@ const LoginPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     if (!email || !password) {
       setError("Please enter both email and password.");
       return;
     }
 
     const storedUser = JSON.parse(localStorage.getItem("cartifyUser"));
-  
+
     if (!storedUser || storedUser.email !== email || storedUser.password !== password) {
       setError("Invalid email or password.");
       return;
     }
-  
+
     const userData = { email, password };
     loginUser(userData);
     navigate("/buy");
@@ -47,8 +47,9 @@ const LoginPage = () => {
 
   return (
     <>
-      <div className="overflow-auto lg:overflow-hidden sm:overflow-visible w-full sm:w-full md:w-full lg:w-full flex flex-col-reverse lg:flex-row items-center justify-center min-h-screen px-8 md:px-12 lg:px-24 bg-primary text-white">
-        <div className="flex flex-col text-center lg:text-left lg:p1-12 w-full lg:w-1/2">
+      <div className="w-screen h-screen flex flex-col-reverse lg:flex-row items-center justify-center bg-primary text-white box-border">
+      <div className="flex flex-col text-center lg:text-left w-full lg:w-1/2 px- sm:px-8 md:px-12">
+
           <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold mt-4 lg:mt-20 lg:mb-4 text-left">
             Login to your <br />
             <span className="text-blue-400 leading-loose bg-gradient-to-r from-white via-blue-400 to-blue-600 text-transparent bg-clip-text">
@@ -56,19 +57,6 @@ const LoginPage = () => {
             </span>
           </h1>
           <div>
-            <div className="">
-              <img
-                src="/shapes/irregular1.svg"
-                alt="Irregular Shape 1"
-                className="absolute top-[-30px] lg:top-[20px] left-0 sm:left-[-15px] w-[300px] h-[250px] sm:w-[400px] sm:h-[350px] md:w-[500px] md:h-[450px] lg:w-[600px] lg:h-[500px] pointer-events-none"
-              />
-
-              <img
-                src="/shapes/irregular2.svg"
-                alt="Irregular Shape 2"
-                className="absolute bottom-[-200px] md:bottom-[-20px] right-0 w-[300px] h-[250px] sm:w-[350px] sm:h-[300px] md:w-[400px] md:h-[350px] lg:w-[450px] lg:h-[400px] pointer-events-none"
-              />
-            </div>
             <div className="flex flex-col space-y-4 mb-8">
               {error && <p className="text-red-500 text-sm">{error}</p>}
 
@@ -102,7 +90,7 @@ const LoginPage = () => {
                 </div>
                 <div className="mt-10 flex flex-col space-y-4">
                   <button
-                    className="bg-secondary text-white px-6 py-3 md:px-8 md:py-4 rounded-lg hover:blue-600"
+                    className="bg-secondary text-white px-6 py-3 md:px-8 md:py-4 rounded-lg hover:bg-blue-600"
                     type="submit"
                   >
                     Login
@@ -118,9 +106,9 @@ const LoginPage = () => {
               </form>
             </div>
 
-            <p className="mt-0 text-center pb-10 mt-16 lg:mt-4 text-md md:text-lg lg:text-xl ">
+            <p className="mt-0 text-center pb-10 mt-16 lg:mt-4 text-md md:text-lg lg:text-xl">
               Don't have an account?
-              <span onClick={handleSignUp} className="text-secondary cursor-pointer hover:text-blue-300 ">
+              <span onClick={handleSignUp} className="text-secondary cursor-pointer hover:text-blue-300">
                 {" "}
                 Sign Up
               </span>

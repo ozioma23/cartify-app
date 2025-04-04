@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import BackButton from '../components/BackButton';
 
-
 const Checkout = ({ cart, setCart }) => {
     const navigate = useNavigate();
   
@@ -17,8 +16,8 @@ const Checkout = ({ cart, setCart }) => {
     };
   
     return (
-        <div className="overflow-auto lg:overflow-hidden sm:overflow-visible relative min-h-screen w-full sm:w-full md:w-full lg:w-full">
-            <div className="container pb-2 mx-auto px-4 lg:px-20 lg:py-8 bg-primary text-white">
+        <div className="overflow-auto lg:overflow-hidden sm:overflow-visible w-screen min-h-screen relative m-0 p-0">
+            <div className="w-full px-16 py-8 bg-primary text-white">
               
                 <div className="flex items-center space-x-2 pt-8 pb-4">
                     <BackButton />
@@ -115,17 +114,16 @@ const Checkout = ({ cart, setCart }) => {
     
                             <button
                                 onClick={handleCheckout}
-                                 className="mx-auto block lg:w-1/2 bg-secondary text-white px-6 py-4 mb-8 mt-8 rounded-md by-4 hover:bg-secondary-dark transition-colors">
-                        
+                                className="mx-auto block lg:w-1/2 bg-secondary text-white px-6 py-4 mb-8 mt-8 rounded-md hover:bg-secondary-dark transition-colors"
+                            >
                                 Checkout
                             </button>
                         </div>
                     </div>
                 )}
             </div>
-    
         </div>
     );
 };
 
-export default Checkout
+export default Checkout;

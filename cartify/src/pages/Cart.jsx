@@ -4,11 +4,9 @@ import BackButton from '../components/BackButton';
 const CartPage = ({ cart, setCart }) => {
     const navigate = useNavigate();
 
-    
-
     return (
-        <div className="overflow-auto lg:overflow-hidden sm:overflow-visible relative w-full w-full sm:w-full md:w-full lg:w-full">
-            <div className="container mx-auto px-4 lg:px-20 lg:py-8 bg-primary text-white">
+        <div className="overflow-auto lg:overflow-hidden sm:overflow-visible w-screen min-h-screen relative m-0 p-0">
+            <div className="w-full px-16 py-8 bg-primary text-white">
                
                 <div className="flex items-center mb-4">
                     <BackButton />
@@ -17,19 +15,6 @@ const CartPage = ({ cart, setCart }) => {
                     </h2>
                 </div>
 
-                <div className="">
-                            <img
-                                src="/shapes/irregular1.svg"
-                                alt="Irregular Shape 1"
-                                className="absolute top-[-30px] lg:top-[20px] left-0 sm:left-[-15px] w-[300px] h-[250px] sm:w-[400px] sm:h-[350px] md:w-[500px] md:h-[450px] lg:w-[600px] lg:h-[500px] pointer-events-none"
-                            />
-
-                            <img
-                                src="/shapes/irregular2.svg"
-                                alt="Irregular Shape 2"
-                                className="absolute bottom-[-200px] md:bottom-[-20px] right-0 w-[300px] h-[250px] sm:w-[350px] sm:h-[300px] md:w-[400px] md:h-[350px] lg:w-[450px] lg:h-[400px] pointer-events-none"
-                            />
-                        </div>
 
                 {cart.length === 0 ? (
                     <p className="text-lg text-center">Your cart is empty.</p>
@@ -63,7 +48,7 @@ const CartPage = ({ cart, setCart }) => {
                                 onClick={() => navigate("/checkout")}
                                 className="mx-auto block lg:w-1/2 bg-secondary text-white px-6 py-4 mb-8 rounded-md hover:bg-opacity-80"
                             >
-                               Proceed to Checkout
+                                Proceed to Checkout
                             </button>
                         </div>
                     </>
