@@ -7,18 +7,15 @@ const LandingPage = () => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    console.log("Navigating to Login");
     navigate("/LoginPage");
   };
 
   const handleSignUp = () => {
-    console.log("Navigating to Sign Up");
     navigate("/signup");
   };
 
   const handleGuestAccess = () => {
     if (continueAsGuest) {
-      console.log("Continuing as Guest");
       continueAsGuest();
       navigate("/buy");
     } else {

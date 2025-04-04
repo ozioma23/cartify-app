@@ -34,13 +34,11 @@ const Signup = () => {
   };
 
   const handleLogin = () => {
-    console.log("Navigating to Login");
     navigate("/LoginPage");
   };
 
   const handleGuestAccess = () => {
     if (continueAsGuest) {
-      console.log("Continuing as Guest");
       continueAsGuest();
       navigate("/buy");
     } else {
